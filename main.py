@@ -9,14 +9,19 @@ def main():
     vehiculo2 = Vehiculo(patente="XYZ-987", modelo="Honda Civic", anio=2018)
     vehiculo3 = Vehiculo(patente="DEF-456", modelo="Ford Ranger", anio=2022)
 
-    # 2. Mostrar la información de los vehículos creados
-    print("--- Flota actual ---")
+    # 2. Mostrar la información de los vehículos y su tarifa por hora
+    print("--- Flota actual y Tarifas ---")
     print(vehiculo1)
+    print(f"Tarifa por hora: ${vehiculo1.tarifa_hora()}\n")
+    
     print(vehiculo2)
+    print(f"Tarifa por hora: ${vehiculo2.tarifa_hora()}\n")
+    
     print(vehiculo3)
+    print(f"Tarifa por hora: ${vehiculo3.tarifa_hora()}\n")
 
     # 3. Simular alguna operación para probar los métodos
-    print("\n--- Ingresando vehículos al taller ---")
+    print("--- Ingresando vehículos al taller ---")
     vehiculo1.ingresar()
     vehiculo2.ingresar()
 
