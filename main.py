@@ -1,5 +1,8 @@
-﻿# Importamos la clase Vehiculo desde el archivo vehiculo.py para poder usarla aquí
+# Importamos las clases necesarias
 from vehiculo import Vehiculo
+from auto import Auto
+from moto import Moto
+from camion import Camion
 
 # Definimos la función principal que contendrá el inicio del programa
 def main():
@@ -8,12 +11,12 @@ def main():
     # Imprimimos un mensaje avisando el inicio del registro
     print("Registrando vehículos...\n")
     
-    # 1. Creamos el primer objeto Vehiculo pasándole sus datos al constructor
-    vehiculo1 = Vehiculo(patente="ABC-123", modelo="Toyota Yaris", anio=2020)
-    # Creamos un segundo vehículo distinto
-    vehiculo2 = Vehiculo(patente="XYZ-987", modelo="Honda Civic", anio=2018)
-    # Creamos el tercer vehículo
-    vehiculo3 = Vehiculo(patente="DEF-456", modelo="Ford Ranger", anio=2022)
+    # 1. Instanciamos un Auto con su capacidad de maletero
+    vehiculo1 = Auto(patente="ABC-123", modelo="Toyota Yaris", anio=2020, capacidad_maletero=350)
+    # 2. Instanciamos una Moto
+    vehiculo2 = Moto(patente="XYZ-987", modelo="Honda CBR", anio=2018)
+    # 3. Instanciamos un Camion con su capacidad de carga
+    vehiculo3 = Camion(patente="DEF-456", anio=2022, capacidad_carga=2500, modelo="Ford Ranger")
 
     # Imprimimos un título para la lista de autos
     print("--- Flota actual y Tarifas ---")
