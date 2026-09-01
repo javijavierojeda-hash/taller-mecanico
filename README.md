@@ -1,6 +1,6 @@
 # 🚗 Sistema de Gestión - Taller Mecánico
 
-Sistema básico en **Python** orientado a objetos para la gestión, registro e ingreso de vehículos en un taller mecánico.
+Sistema en **Python** orientado a objetos para la gestión, registro e ingreso de vehículos en un taller mecánico utilizando conceptos de herencia y encapsulamiento.
 
 ---
 
@@ -8,8 +8,12 @@ Sistema básico en **Python** orientado a objetos para la gestión, registro e i
 
 ```text
 taller-mecanico/
+├── .gitignore       # Archivos y carpetas ignorados por Git
+├── auto.py          # Subclase Auto (con capacidad_maletero)
+├── camion.py        # Subclase Camion (con capacidad_carga)
+├── moto.py          # Subclase Moto (hereda de Vehiculo)
+├── vehiculo.py      # Clase base Vehiculo y lógica general
 ├── main.py          # Archivo principal de ejecución y pruebas
-├── vehiculo.py      # Definición de la clase Vehiculo y su lógica
 └── README.md        # Documentación del proyecto
 ```
 
@@ -17,28 +21,43 @@ taller-mecanico/
 
 ## ⚙️ Descripción de los Módulos
 
-### 1. `vehiculo.py` (Clase `Vehiculo`)
-Modela los datos y el comportamiento de cada vehículo que llega al taller.
+### 1. `vehiculo.py` (Clase Base `Vehiculo`)
+Modela los datos y el comportamiento común de todos los vehículos del taller.
 
 * **Atributos:**
   * `patente` *(str)*: Placa o patente identificatoria del vehículo.
-  * `modelo` *(str)*: Marca y modelo (ej. *Toyota Yaris*).
+  * `modelo` *(str)*: Marca y modelo.
   * `anio` *(int)*: Año de fabricación.
-  * `__en_taller` *(bool, privado)*: Indica si el vehículo se encuentra dentro del taller (`True`) o fuera (`False`).
+  * `__en_taller` *(bool, privado)*: Indica si el vehículo está en el taller (`True`) o fuera (`False`).
 
-* **Métodos:**
+* **Métodos principales:**
   * `ingresar()`: Registra la entrada del vehículo al taller.
   * `entregar()`: Registra la salida/entrega del vehículo al cliente.
   * `tarifa_hora()`: Retorna la tarifa por hora de trabajo asignada (base: `$35.0`).
-  * `__str__()`: Muestra una representación textual detallada del estado del vehículo.
+  * `__str__()`: Representación textual del vehículo y su estado actual.
 
 ---
 
-### 2. `main.py` (Punto de Entrada)
+### 2. Subclases (Herencia de `Vehiculo`)
+
+* **`auto.py` (Clase `Auto`):**
+  * Hereda todos los atributos y métodos de `Vehiculo`.
+  * **Atributo propio:** `__capacidad_maletero` *(int, privado)*: Capacidad del baúl/maletero en litros.
+
+* **`camion.py` (Clase `Camion`):**
+  * Hereda todos los atributos y métodos de `Vehiculo`.
+  * **Atributo propio:** `__capacidad_carga` *(int, privado)*: Capacidad de carga en kilogramos.
+
+* **`moto.py` (Clase `Moto`):**
+  * Hereda directamente todos los atributos y métodos de `Vehiculo`.
+
+---
+
+### 3. `main.py` (Punto de Entrada)
 Programa principal que:
-1. Crea instancias de prueba para diferentes vehículos (*Toyota Yaris*, *Honda Civic*, *Ford Ranger*).
-2. Consulta e imprime la flota y sus respectivas tarifas horarias.
-3. Simula el ingreso de autos al taller con `ingresar()`.
+1. Instancia vehículos específicos utilizando las subclases (`Auto`, `Moto`, `Camion`).
+2. Consulta e imprime la información de cada vehículo y sus tarifas horarias.
+3. Simula el ingreso de los vehículos al taller con `ingresar()`.
 
 ---
 
@@ -52,6 +71,26 @@ Programa principal que:
 python main.py
 ```
 
+### Salida esperada:
+```text
+=== Bienvenido al Sistema del Taller Mecánico ===
+Registrando vehículos...
+
+--- Flota actual y Tarifas ---
+Vehículo [Patente: ABC-123, Modelo: Toyota Yaris, Año: 2020, Estado: Fuera del taller]
+Tarifa por hora: $35.0
+
+Vehículo [Patente: XYZ-987, Modelo: Honda CBR, Año: 2018, Estado: Fuera del taller]
+Tarifa por hora: $35.0
+
+Vehículo [Patente: DEF-456, Modelo: Ford Ranger, Año: 2022, Estado: Fuera del taller]
+Tarifa por hora: $35.0
+
+--- Ingresando vehículos al taller ---
+El vehículo Toyota Yaris (ABC-123) ha ingresado al taller.
+El vehículo Honda CBR (XYZ-987) ha ingresado al taller.
+```
+
 ---
 
 ## 🌿 Control de Versiones y Ramas (Git & GitHub)
@@ -63,26 +102,27 @@ python main.py
 
 ---
 
-### 🛠️ Comandos Git utilizados paso a paso:
+### 🛠️ Flujo de Trabajo Git:
 
-1. **Clonar el repositorio:**
+1. **Clonar repositorio:**
    ```bash
    git clone https://github.com/javijavierojeda-hash/taller-mecanico.git
    ```
 
-2. **Crear y posicionarse en la nueva rama (`rama-taller-mecanico`):**
+2. **Crear y cambiar a la rama de trabajo:**
    ```bash
    git checkout -b rama-taller-mecanico
    ```
 
-3. **Subir la rama a GitHub y vincular el seguimiento:**
+3. **Guardar y confirmar cambios (Commit):**
+   ```bash
+   git add .
+   git commit -m "mensaje descriptivo"
+   ```
+
+4. **Publicar y subir cambios a GitHub (Push):**
    ```bash
    git push -u origin rama-taller-mecanico
    ```
 
-4. **Comprobar en qué rama estás y el estado de los archivos:**
-   ```bash
-   git branch
-   git status
-   ```
 
