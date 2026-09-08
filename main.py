@@ -42,22 +42,30 @@ def main():
     vehiculo2.ingresar()
 
     # =========================================================================
-    # REQUISITO: Manejo de excepciones con Try / Except en dato validable
-    # 1. Usamos el dato validable (property 'anio' con setter) sobre Vehiculo
-    # 2. Probamos asignar un valor inválido dentro de un bloque try
-    # 3. En el except capturamos el ValueError y mostramos un mensaje entendible
-    # 4. Confirmamos que el resto del programa sigue ejecutándose después
+    # REQUISITO: Try con múltiples Except (ValueError y TypeError) + Finally
+    # 1. Usamos el dato validable (property con setter) sobre Vehiculo
+    # 2. Primer except: ValueError (valor o formato inválido)
+    # 3. Segundo except: TypeError (tipo incorrecto, ej: número donde se espera texto)
+    # 4. Cláusula finally: imprime mensaje de cierre (se ejecuta siempre)
+    # 5. Confirmación de que el resto del programa sigue ejecutándose después
     # =========================================================================
-    print("\n--- Demostración: Prueba de dato validable con Try / Except ---")
-    print("Intentando asignar un año inválido (1850) a vehiculo1...")
+    print("\n--- Demostración: Try / Except múltiple (ValueError + TypeError) + Finally ---")
+    print("Probando asignar un tipo incorrecto (un número 123456 donde se esperaba texto en patente)...")
     try:
-        vehiculo1.anio = 1850  # El setter de Vehiculo valida 1900-2030 y lanza ValueError
+        # Pasamos un número (int) a una propiedad que espera texto (str)
+        vehiculo1.patente = 123456
     except ValueError as e:
-        # Imprimimos un mensaje amigable y entendible en vez de dejar que el programa explote
-        print(f"   [AVISO - Error controlado]: No se pudo asignar el anio. Motivo: {e}")
+        # Primer except: captura valores con formato inválido
+        print(f"   [AVISO - Error de Valor]: {e}")
+    except TypeError as e:
+        # Segundo except: captura tipos de datos incorrectos
+        print(f"   [AVISO - Error de Tipo]: Se esperaba texto pero se recibio otro tipo -> {e}")
+    finally:
+        # Bloque finally: se ejecuta SIEMPRE, haya ocurrido o no un error
+        print("   [FINALLY]: Finalizando bloque de validacion (este mensaje siempre se muestra).")
 
-    # 4. Confirmación explícita de que el resto del programa sigue ejecutándose
-    print("   [CONFIRMACION]: El programa no exploto y el resto del codigo sigue ejecutandose.\n")
+    # Confirmación de que el resto del programa sigue ejecutándose después
+    print("   [CONFIRMACION]: El programa no exploto y el resto del codigo sigue ejecutandose con normalidad.\n")
 
     # Demostramos más validaciones sobre otros atributos (patente, modelo, capacidades)
     print("--- Otras pruebas de validación complementarias ---")

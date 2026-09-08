@@ -22,8 +22,15 @@ class Vehiculo:
     # Definimos el setter de la propiedad patente para validar el valor antes de asignarlo
     @patente.setter
     def patente(self, valor: str):
-        # Validamos que tenga al menos 6 caracteres y no contenga espacios
-        if not isinstance(valor, str) or len(valor) < 6 or " " in valor:
+        # 1. Validamos que el tipo sea estrictamente texto (str)
+        if not isinstance(valor, str):
+            print(f"  [ERROR DE VALIDACION] La patente debe ser de tipo texto (str).")
+            raise TypeError(
+                f"Tipo invalido para patente: se esperaba texto (str), pero se recibio {type(valor).__name__}."
+            )
+
+        # 2. Validamos formato: que tenga al menos 6 caracteres y no contenga espacios
+        if len(valor) < 6 or " " in valor:
             print(f"  [ERROR DE VALIDACION] La patente '{valor}' no es valida (minimo 6 caracteres y sin espacios).")
             raise ValueError(
                 f"Patente invalida: '{valor}'. Debe tener al menos 6 caracteres y no contener espacios."
@@ -42,8 +49,15 @@ class Vehiculo:
     # Definimos el setter de la propiedad modelo para validar que no esté vacío
     @modelo.setter
     def modelo(self, valor: str):
-        # Validamos que sea texto, no esté vacío y tenga al menos 2 caracteres
-        if not isinstance(valor, str) or not valor.strip() or len(valor.strip()) < 2:
+        # 1. Validamos que el tipo sea estrictamente texto (str)
+        if not isinstance(valor, str):
+            print(f"  [ERROR DE VALIDACION] El modelo debe ser de tipo texto (str).")
+            raise TypeError(
+                f"Tipo invalido para modelo: se esperaba texto (str), pero se recibio {type(valor).__name__}."
+            )
+
+        # 2. Validamos que no esté vacío y tenga al menos 2 caracteres
+        if not valor.strip() or len(valor.strip()) < 2:
             print(f"  [ERROR DE VALIDACION] El modelo '{valor}' no es valido. Debe tener al menos 2 caracteres y no estar vacio.")
             raise ValueError(
                 f"Modelo invalido: '{valor}'. Debe tener al menos 2 caracteres y no estar vacio."
