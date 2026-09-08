@@ -41,61 +41,49 @@ def main():
     # Ejecutamos el método ingresar() para el segundo vehículo
     vehiculo2.ingresar()
 
-    # Demostramos las validaciones de patente (éxito y error)
-    print("\n--- Pruebas de validación de patente ---")
+    # =========================================================================
+    # REQUISITO: Manejo de excepciones con Try / Except en dato validable
+    # 1. Usamos el dato validable (property 'anio' con setter) sobre Vehiculo
+    # 2. Probamos asignar un valor inválido dentro de un bloque try
+    # 3. En el except capturamos el ValueError y mostramos un mensaje entendible
+    # 4. Confirmamos que el resto del programa sigue ejecutándose después
+    # =========================================================================
+    print("\n--- Demostración: Prueba de dato validable con Try / Except ---")
+    print("Intentando asignar un año inválido (1850) a vehiculo1...")
+    try:
+        vehiculo1.anio = 1850  # El setter de Vehiculo valida 1900-2030 y lanza ValueError
+    except ValueError as e:
+        # Imprimimos un mensaje amigable y entendible en vez de dejar que el programa explote
+        print(f"   [AVISO - Error controlado]: No se pudo asignar el anio. Motivo: {e}")
 
-    # Caso 1: Patente inválida con espacios
-    print("1. Probando patente con espacios ('AB 12 34'):")
+    # 4. Confirmación explícita de que el resto del programa sigue ejecutándose
+    print("   [CONFIRMACION]: El programa no exploto y el resto del codigo sigue ejecutandose.\n")
+
+    # Demostramos más validaciones sobre otros atributos (patente, modelo, capacidades)
+    print("--- Otras pruebas de validación complementarias ---")
+
+    # Prueba de patente inválida y válida
+    print("1. Probando patente inválida con espacios ('AB 12 34'):")
     try:
         vehiculo1.patente = "AB 12 34"
     except ValueError as e:
         print(f"   [Excepción capturada]: {e}\n")
 
-    # Caso 2: Patente inválida muy corta
-    print("2. Probando patente muy corta ('A1'):")
-    try:
-        vehiculo1.patente = "A1"
-    except ValueError as e:
-        print(f"   [Excepción capturada]: {e}\n")
-
-    # Caso 3: Patente válida
-    print("3. Probando patente válida ('NUEVA-99'):")
+    print("2. Probando patente válida ('NUEVA-99'):")
     try:
         vehiculo1.patente = "NUEVA-99"
         print(f"   Nueva patente registrada en el objeto: {vehiculo1.patente}\n")
     except ValueError as e:
         print(f"   [Error]: {e}\n")
 
-    # Demostramos las validaciones de año
-    print("--- Pruebas de validación de año ---")
-    print("1. Probando año fuera de rango (1850):")
-    try:
-        vehiculo1.anio = 1850
-    except ValueError as e:
-        print(f"   [Excepción capturada]: {e}\n")
-
-    print("2. Probando año con formato incorrecto ('dos_mil'):")
-    try:
-        vehiculo1.anio = "dos_mil"
-    except ValueError as e:
-        print(f"   [Excepción capturada]: {e}\n")
-
-    print("3. Probando año válido (2023):")
-    try:
-        vehiculo1.anio = 2023
-        print(f"   Nuevo año registrado en el objeto: {vehiculo1.anio}\n")
-    except ValueError as e:
-        print(f"   [Error]: {e}\n")
-
-    # Demostramos las validaciones de modelo
-    print("--- Pruebas de validación de modelo ---")
-    print("1. Probando modelo vacío o con espacios ('   '):")
+    # Prueba de modelo inválido y válido
+    print("3. Probando modelo vacío ('   '):")
     try:
         vehiculo1.modelo = "   "
     except ValueError as e:
         print(f"   [Excepción capturada]: {e}\n")
 
-    print("2. Probando modelo válido ('Toyota Corolla Cross'):")
+    print("4. Probando modelo válido ('Toyota Corolla Cross'):")
     try:
         vehiculo1.modelo = "Toyota Corolla Cross"
         print(f"   Nuevo modelo registrado: {vehiculo1.modelo}\n")
@@ -103,18 +91,19 @@ def main():
         print(f"   [Error]: {e}\n")
 
     # Demostramos las validaciones de capacidad de maletero y carga
-    print("--- Pruebas de validación de capacidades ---")
-    print("1. Probando capacidad de maletero negativa (-50 L):")
+    print("5. Probando capacidad de maletero negativa (-50 L):")
     try:
         vehiculo1.capacidad_maletero = -50
     except ValueError as e:
         print(f"   [Excepción capturada]: {e}\n")
 
-    print("2. Probando capacidad de carga de camión inválida (0 kg):")
+    print("6. Probando capacidad de carga de camión inválida (0 kg):")
     try:
         vehiculo3.capacidad_carga = 0
     except ValueError as e:
         print(f"   [Excepción capturada]: {e}\n")
+
+    print("=== Fin de la ejecución: Todo el programa se ejecutó exitosamente ===")
 
 # Condición especial de Python: comprueba si este es el archivo principal que se está ejecutando
 if __name__ == "__main__":
