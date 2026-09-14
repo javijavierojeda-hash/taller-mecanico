@@ -1,128 +1,35 @@
-# 🚗 Sistema de Gestión - Taller Mecánico
+# Taller Mecánico
 
-Sistema en **Python** orientado a objetos para la gestión, registro e ingreso de vehículos en un taller mecánico utilizando conceptos de herencia y encapsulamiento.
+Repositorio para la asignatura de Programación Orientada a Objetos Seguro.
 
----
-
-## 📁 Estructura del Proyecto
-
-```text
-taller-mecanico/
-├── .gitignore       # Archivos y carpetas ignorados por Git
-├── auto.py          # Subclase Auto (con capacidad_maletero)
-├── camion.py        # Subclase Camion (con capacidad_carga)
-├── moto.py          # Subclase Moto (hereda de Vehiculo)
-├── vehiculo.py      # Clase base Vehiculo y lógica general
-├── main.py          # Archivo principal de ejecución y pruebas
-└── README.md        # Documentación del proyecto
-```
+**Profesor:** Michael Arjel
+**Institución:** Inacap
 
 ---
 
-## ⚙️ Descripción de los Módulos
+## Bitácora de Avances
 
-### 1. `vehiculo.py` (Clase Base `Vehiculo`)
-Modela los datos y el comportamiento común de todos los vehículos del taller.
+### 25 de Agosto de 2026
+- **Configuración Inicial:** Vinculación del directorio local con el repositorio de GitHub usando el CLI de GitHub (`gh auth`).
+- **Limpieza:** Se eliminó la versión antigua del archivo `vehiculo.py` para construir el proyecto desde cero.
+- **Clase Vehiculo (`vehiculo.py`):**
+  - Se creó la clase principal del proyecto.
+  - Se definieron los atributos privados `__patente`, `__anio` y `__en_taller` en el constructor, aplicando encapsulamiento y *type hints*.
+  - Se crearon los métodos `ingresar()` y `entregar()` con validación de estado.
+  - Se creó el método `tarifa_hora()` que retorna un valor fijo de 5000.
+- **Script de Pruebas (`main.py`):**
+  - Se creó el archivo de ejecución principal.
+  - Se importó la clase `Vehiculo` y se instanciaron 3 objetos con datos ficticios.
+  - Se probó la invocación de métodos y la impresión de la tarifa por hora en consola.
+- **Documentación:** Se comentaron todas las líneas de código en ambos archivos (`vehiculo.py` y `main.py`) explicando paso a paso su funcionamiento con fines educativos.
 
-* **Atributos:**
-  * `patente` *(str)*: Placa o patente identificatoria del vehículo.
-  * `modelo` *(str)*: Marca y modelo.
-  * `anio` *(int)*: Año de fabricación.
-  * `__en_taller` *(bool, privado)*: Indica si el vehículo está en el taller (`True`) o fuera (`False`).
-
-* **Métodos principales:**
-  * `ingresar()`: Registra la entrada del vehículo al taller.
-  * `entregar()`: Registra la salida/entrega del vehículo al cliente.
-  * `tarifa_hora()`: Retorna la tarifa por hora de trabajo asignada (base: `$35.0`).
-  * `__str__()`: Representación textual del vehículo y su estado actual.
-
----
-
-### 2. Subclases (Herencia de `Vehiculo`)
-
-* **`auto.py` (Clase `Auto`):**
-  * Hereda todos los atributos y métodos de `Vehiculo`.
-  * **Atributo propio:** `__capacidad_maletero` *(int, privado)*: Capacidad del baúl/maletero en litros.
-
-* **`camion.py` (Clase `Camion`):**
-  * Hereda todos los atributos y métodos de `Vehiculo`.
-  * **Atributo propio:** `__capacidad_carga` *(int, privado)*: Capacidad de carga en kilogramos.
-
-* **`moto.py` (Clase `Moto`):**
-  * Hereda directamente todos los atributos y métodos de `Vehiculo`.
-
----
-
-### 3. `main.py` (Punto de Entrada)
-Programa principal que:
-1. Instancia vehículos específicos utilizando las subclases (`Auto`, `Moto`, `Camion`).
-2. Consulta e imprime la información de cada vehículo y sus tarifas horarias.
-3. Simula el ingreso de los vehículos al taller con `ingresar()`.
-
----
-
-## 🚀 Cómo Ejecutar el Proyecto
-
-### Requisitos:
-* **Python 3.8+** instalado.
-
-### Ejecución:
-```bash
-python main.py
-```
-
-### Salida esperada:
-```text
-=== Bienvenido al Sistema del Taller Mecánico ===
-Registrando vehículos...
-
---- Flota actual y Tarifas ---
-Vehículo [Patente: ABC-123, Modelo: Toyota Yaris, Año: 2020, Estado: Fuera del taller]
-Tarifa por hora: $35.0
-
-Vehículo [Patente: XYZ-987, Modelo: Honda CBR, Año: 2018, Estado: Fuera del taller]
-Tarifa por hora: $35.0
-
-Vehículo [Patente: DEF-456, Modelo: Ford Ranger, Año: 2022, Estado: Fuera del taller]
-Tarifa por hora: $35.0
-
---- Ingresando vehículos al taller ---
-El vehículo Toyota Yaris (ABC-123) ha ingresado al taller.
-El vehículo Honda CBR (XYZ-987) ha ingresado al taller.
-```
-
----
-
-## 🌿 Control de Versiones y Ramas (Git & GitHub)
-
-### Enlaces del Proyecto:
-* **Repositorio principal:** [github.com/javijavierojeda-hash/taller-mecanico](https://github.com/javijavierojeda-hash/taller-mecanico)
-* **Rama de desarrollo activa:** [`rama-taller-mecanico`](https://github.com/javijavierojeda-hash/taller-mecanico/tree/rama-taller-mecanico)
-* **Pull Request:** [Crear / Ver Pull Request en GitHub](https://github.com/javijavierojeda-hash/taller-mecanico/pull/new/rama-taller-mecanico)
-
----
-
-### 🛠️ Flujo de Trabajo Git:
-
-1. **Clonar repositorio:**
-   ```bash
-   git clone https://github.com/javijavierojeda-hash/taller-mecanico.git
-   ```
-
-2. **Crear y cambiar a la rama de trabajo:**
-   ```bash
-   git checkout -b rama-taller-mecanico
-   ```
-
-3. **Guardar y confirmar cambios (Commit):**
-   ```bash
-   git add .
-   git commit -m "mensaje descriptivo"
-   ```
-
-4. **Publicar y subir cambios a GitHub (Push):**
-   ```bash
-   git push -u origin rama-taller-mecanico
-   ```
-
-
+### 31 de Agosto de 2026
+- **Creación de Rama de Trabajo:** Creación y publicación de la rama `feature/desarrollo`.
+- **Implementación de Herencia (Subclases):**
+  - **Clase Auto (`auto.py`):** Hereda de `Vehiculo`, implementa su propio constructor invocando a `super()` y añade el atributo privado `__capacidad_maletero` (en litros).
+  - **Clase Moto (`moto.py`):** Hereda de `Vehiculo` (estructura base).
+  - **Clase Camion (`camion.py`):** Hereda de `Vehiculo`, implementa su propio constructor invocando a `super()` y añade el atributo privado `__capacidad_carga` (en kilos).
+- **Actualización de Script Principal (`main.py`):**
+  - Se importaron las subclases `Auto`, `Moto` y `Camion`.
+  - Se instanciaron objetos de cada una de las clases hijas y se verificó la invocación de métodos heredados (`ingresar()` y `tarifa_hora()`).
+- **Documentación:** Código comentado línea por línea con fines pedagógicos.

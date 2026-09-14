@@ -1,10 +1,9 @@
-# Importamos la clase base Vehiculo desde el archivo vehiculo.py
 from vehiculo import Vehiculo
+from modelo import Modelo
 
-# Definimos la clase Moto que hereda de la clase base Vehiculo
 class Moto(Vehiculo):
-
-    # Sobrescribimos el método para devolver la tarifa por hora específica de Moto
+    def __init__(self, patente: str, anio: int, modelo: Modelo):
+        super().__init__(patente, anio, modelo)
+        
     def tarifa_hora(self) -> int:
-        # Retorna el valor fijo de 15000 como número entero (tarifa horaria para motos)
         return 15000
