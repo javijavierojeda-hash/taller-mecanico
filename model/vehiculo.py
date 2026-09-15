@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from modelo import Modelo
+from model.modelo import Modelo
 
 class Vehiculo(ABC):
     def __init__(self, patente: str, anio: int, modelo: Modelo):

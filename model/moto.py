@@ -1,5 +1,5 @@
-from vehiculo import Vehiculo
-from modelo import Modelo
+from model.vehiculo import Vehiculo
+from model.modelo import Modelo
 
 class Moto(Vehiculo):
     def __init__(self, patente: str, anio: int, modelo: Modelo):

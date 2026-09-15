@@ -1,14 +1,14 @@
-from marca import Marca
-from modelo import Modelo
-from auto import Auto
-from moto import Moto
-from camion import Camion
-from persona import Persona
-from cliente import Cliente
-from rol import Rol
-from usuario import Usuario
-from repuesto import Repuesto
-from ordentrabajo import OrdenTrabajo
+from model.marca import Marca
+from model.modelo import Modelo
+from model.auto import Auto
+from model.moto import Moto
+from model.camion import Camion
+from model.persona import Persona
+from model.cliente import Cliente
+from model.rol import Rol
+from model.usuario import Usuario
+from model.repuesto import Repuesto
+from model.ordentrabajo import OrdenTrabajo
 
 def main():
     # 1. Crear Marcas y Modelos
